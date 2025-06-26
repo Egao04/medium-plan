@@ -2,10 +2,102 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私の3Dモデル</title>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* 背景色を設定して余白を見やすく */
+            display: flex; /* flexboxを使って中央寄せや配置を容易に */
+            justify-content: center; /* 水平方向の中央寄せ */
+            align-items: center; /* 垂直方向の中央寄せ（コンテンツが少ない場合） */
+            min-height: 100vh; /* 少なくともビューポートの高さ全体を使う */
+            box-sizing: border-box; /* paddingがwidth/heightに含まれるように */
+        }
+
+        .container {
+            width: 90%; /* コンテンツの幅をビューポートの90%に設定 */
+            max-width: 800px; /* 最大幅を設定して、大きな画面で広がりすぎないように */
+            margin: 20px auto; /* 上下に20px、左右は自動で中央寄せ */
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center; /* テキストを中央寄せ */
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        model-viewer {
+            width: 100%; /* 親要素の幅いっぱいに広がる */
+            height: 400px; /* 高さを固定（必要に応じて調整） */
+            border-radius: 4px;
+            overflow: hidden; /* 角丸にするために必要 */
+            --poster-color: #ffffff; /* ロード中の背景色 */
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        /* スマートフォン向けの調整 */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%; /* 小さい画面では少し広めに */
+                margin: 10px auto; /* 余白を少し減らす */
+                padding: 15px;
+            }
+
+            model-viewer {
+                height: 300px; /* 小さい画面では高さを少し減らす */
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+
+        /* 非常に小さい画面向けの調整 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            model-viewer {
+                height: 250px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <model-viewer src="plan.glb" camera-controls ></model-viewer>
+    <div class="container">
+        <h1>ミディアム公演単管客席イメージ
+        </h1>
+        <model-viewer
+            src="plan.glb"
+            alt="私の3Dモデルの記述"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            camera-controls
+            shadow-intensity="1"
+            autoplay
+            environment-image="neutral"
+            exposure="1"
+            camera-orbit="0deg 90deg 1.5m"
+            field-of-view="auto"
+        ></model-viewer>
+        <p>
+            これは私が作成した3Dモデルです。様々な角度から自由に探索してみてください！
+            ご意見やご感想があれば、ぜひお聞かせください。
+        </p>
+    </div>
 </body>
 </html>
